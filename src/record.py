@@ -21,9 +21,24 @@ class Record:
 
         # Iterates through rows in the dataframe
         for i, row in df.iterrows():
+            # Converts the dates into the correct format
+            row['Visit_time'] = self.convert_date(row['Visit_time'])
             # Adds the patient into the records
             self.add_patient(row)
 
+
+    # Converts date from m/d/yyyy to yyyy-mm-dd
+    def convert_date(self, date):
+        date_split = date.split('/')
+        if len(date_split) == 1: return date
+        else:
+            if len(date_split[0]) == 1:
+                date_split[0] = '0' + date_split[0]
+            if len(date_split[1]) == 1:
+                date_split[1] = '0' + date_split[1]
+
+            date = date_split[2] + '-' + date_split[0] + '-' + date_split[1]
+            return date
 
     
     # Returns a Patient object with the corresponding patient ID
