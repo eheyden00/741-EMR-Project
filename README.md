@@ -1,4 +1,6 @@
 # 741-EMR-Project
+By: Evan Heyden
+
 Toy model of an electronic medical record system
 
 Description:
